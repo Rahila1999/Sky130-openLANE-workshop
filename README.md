@@ -1,6 +1,6 @@
 # Sky130-openLANE-workshop
 
-# DAY 1
+## DAY 1
 
 ./flow.tcl -interactive
 
