@@ -38,7 +38,7 @@ Then : run_floorplan
 
 To view the layout in Magic
 
-magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def   from  ~/results/floorplan directory
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
 ![d2l22](https://user-images.githubusercontent.com/66617592/97321157-950fd000-1894-11eb-9ec9-061905e82153.PNG)
 
@@ -50,13 +50,15 @@ set ::env(FP_IO_MODE)2
 
 run_floorplan
 
-magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def   from  ~/results/floorplan directory
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
 ![22](https://user-images.githubusercontent.com/66617592/97321813-457dd400-1895-11eb-8b2b-39ef5b778642.PNG)
 
 ### Placement
 
 run_placement
+
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 
 ![pl](https://user-images.githubusercontent.com/66617592/97321781-3e56c600-1895-11eb-93f3-551cfc6129ce.PNG)
 
@@ -118,7 +120,36 @@ plot y vs time a
  
 ![3r](https://user-images.githubusercontent.com/66617592/97339970-399c0d00-18a9-11eb-86b1-f8e8c62a0f8c.PNG)
 
-GRID
+Conversion of grid info to track info
 
 ![grid](https://user-images.githubusercontent.com/66617592/97340355-af07dd80-18a9-11eb-9303-3dca62d85f47.PNG)
 
+**Lab Exercise : Introduction to MAGIC, load sky130 tech rules, fix poly.9 error in sky130 tech file**
+
+Introduction to MAGIC
+
+![1](https://user-images.githubusercontent.com/66617592/97341424-0d818b80-18ab-11eb-806d-82c24836fbc9.PNG)
+
+![5](https://user-images.githubusercontent.com/66617592/97341436-12ded600-18ab-11eb-9e38-04578a23e23b.PNG)
+
+Load Sky130 Tech rules
+
+![7](https://user-images.githubusercontent.com/66617592/97341450-170af380-18ab-11eb-9c4c-d32992699be7.PNG)
+
+Fix poly.9 Error in Sky130 tech file
+
+![poly 9](https://user-images.githubusercontent.com/66617592/97341472-1d00d480-18ab-11eb-8144-b121bd4c50d1.PNG)
+
+Implement polyresistor spacing to diff and tap 
+
+![poly out](https://user-images.githubusercontent.com/66617592/97341489-20945b80-18ab-11eb-8a4b-8639644611d5.PNG)
+
+## DAY 3 - Pre Layout timing Analysis and importance of food clock tree
+
+Lef write file
+
+![less](https://user-images.githubusercontent.com/66617592/97342907-da3ffc00-18ac-11eb-9aab-96b04e730aea.PNG)
+
+Placement completed
+
+![placement](https://user-images.githubusercontent.com/66617592/97342919-ddd38300-18ac-11eb-990a-6df3c35abf3b.PNG)
