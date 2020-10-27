@@ -65,4 +65,22 @@ run_placement
 
 ## DAY 3
 
+**In Tab 1:**
 
+cd ~/work/tools/openlane_working_dir/openlane
+
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+
+cd vsdstdcelldesign
+
+**In Tab 2 :**
+
+cd ~/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic
+
+cp sky130A.tech /work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+**In Tab 1:**
+
+magic -T sky130A.tech sky130_inv.mag &
+
+![55](https://user-images.githubusercontent.com/66617592/97337147-e96f7b80-18a5-11eb-960d-1391f5b7148e.PNG)
