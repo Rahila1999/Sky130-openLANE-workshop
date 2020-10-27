@@ -8,6 +8,7 @@
 ![pic1](https://user-images.githubusercontent.com/66617592/97317402-c5ee0600-1890-11eb-8dfd-950a8b62abd2.PNG)
 
 package require openlane 0.9
+
 prep -design picorv32a
 
 ![pic2](https://user-images.githubusercontent.com/66617592/97317418-cb4b5080-1890-11eb-90e4-366701631175.PNG)
