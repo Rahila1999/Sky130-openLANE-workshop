@@ -58,7 +58,7 @@ magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/
 
 run_placement
 
-magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
 ![pl](https://user-images.githubusercontent.com/66617592/97321781-3e56c600-1895-11eb-93f3-551cfc6129ce.PNG)
 
@@ -144,12 +144,172 @@ Implement polyresistor spacing to diff and tap
 
 ![poly out](https://user-images.githubusercontent.com/66617592/97341489-20945b80-18ab-11eb-8a4b-8639644611d5.PNG)
 
-## DAY 3 - Pre Layout timing Analysis and importance of food clock tree
+## DAY 4 - Pre Layout timing Analysis and importance of food clock tree
 
 Lef write file
 
 ![less](https://user-images.githubusercontent.com/66617592/97342907-da3ffc00-18ac-11eb-9aab-96b04e730aea.PNG)
 
+Include the below command to include the additional lef into the flow:
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+
+add_lefs -src $lefs
+
+Then Perform Synthesis
+
+run_synthesis
+
+run_placement
+
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
 Placement completed
 
 ![placement](https://user-images.githubusercontent.com/66617592/97342919-ddd38300-18ac-11eb-990a-6df3c35abf3b.PNG)
+
+In the terminal:
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) 1
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING) 
+
+set $::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+
+run_placement
+
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+**Output**
+
+![ddd](https://user-images.githubusercontent.com/66617592/97344329-9b12aa80-18ae-11eb-84ce-6a70e3b6d182.PNG)
+
+![CE](https://user-images.githubusercontent.com/66617592/97344262-87ffda80-18ae-11eb-9b9d-86973d3719d1.PNG)
+
+![ced](https://user-images.githubusercontent.com/66617592/97344276-8b936180-18ae-11eb-97e4-04b7df881c8d.PNG)
+
+![vsddd](https://user-images.githubusercontent.com/66617592/97344303-92ba6f80-18ae-11eb-8016-716a1808c003.PNG)
+
+**Timing Analysis with ideal clocks using openSTA and Clock Tree Synthesis using Trioton CTS and signal integrity**
+
+basesdc values
+
+![mybasedsdc](https://user-images.githubusercontent.com/66617592/97345190-c649c980-18af-11eb-8440-11861a97730c.PNG)
+
+Static Timing Analysis
+
+![sta 2](https://user-images.githubusercontent.com/66617592/97345189-c5b13300-18af-11eb-97a5-1f313eba03a3.PNG)
+
+Optimizing synthesis to reduce setup violations and basic timing ECO
+
+![sta3](https://user-images.githubusercontent.com/66617592/97345186-c5189c80-18af-11eb-8ad5-cd427d428251.PNG)
+
+Clock Tree Synthesis using Trioton CTS
+
+![cts](https://user-images.githubusercontent.com/66617592/97345176-c34ed900-18af-11eb-883c-3716fd229610.PNG)
+
+Verifying CTS run
+
+![ctss](https://user-images.githubusercontent.com/66617592/97345170-c2b64280-18af-11eb-9740-e6908928d235.PNG)
+
+**Timing Analysis with real clocks using openSTA**
+
+Timing Analysis with real clocks using openSTA
+
+![sdcc](https://user-images.githubusercontent.com/66617592/97345198-c8ac2380-18af-11eb-8ea2-a06b423019a5.PNG)
+
+Execute openSTA with right timing libraries and CTS assignment
+
+![ctssss](https://user-images.githubusercontent.com/66617592/97345194-c77af680-18af-11eb-8793-832e7013ea0d.PNG)
+
+![dc](https://user-images.githubusercontent.com/66617592/97345192-c6e26000-18af-11eb-9bc2-93c33b530558.PNG)
+
+To observe bigger impact CTS buffer on setup and hold timing 
+
+![d4e](https://user-images.githubusercontent.com/66617592/97345235-d5c91280-18af-11eb-91f5-96f0dcb245b8.PNG)
+
+## DAY 4 - Final steps for RTL2GDS using tritonRoute and openSTA
+
+Building power Distribution Network
+
+![d51](https://user-images.githubusercontent.com/66617592/97345232-d497e580-18af-11eb-96e8-63c4bdbae493.PNG)
+
+From Power Straps to std cell power
+
+![gen_pdn](https://user-images.githubusercontent.com/66617592/97345254-d9f53000-18af-11eb-98bc-871d27440282.PNG)
+
+![pdn](https://user-images.githubusercontent.com/66617592/97345252-d95c9980-18af-11eb-866f-131fa75255eb.PNG)
+
+Routing - Detailed and Global using TriotonRoute
+
+![d55](https://user-images.githubusercontent.com/66617592/97345250-d95c9980-18af-11eb-8f51-3627345075da.PNG)
+
+Routing Completed
+
+![routing](https://user-images.githubusercontent.com/66617592/97345247-d8c40300-18af-11eb-958b-3172e2e8955d.PNG)
+
+Routing information
+
+![rou](https://user-images.githubusercontent.com/66617592/97345246-d82b6c80-18af-11eb-85a3-1df76b71bf4b.PNG)
+
+![rrrrrrrr](https://user-images.githubusercontent.com/66617592/97345245-d82b6c80-18af-11eb-8448-d2f3dda47a2c.PNG)
+
+Final files list post route
+
+![last](https://user-images.githubusercontent.com/66617592/97345243-d792d600-18af-11eb-93d3-29c5af0409bc.PNG)
+
+
+
+# ACKNOWLEDGEMENTS
+
+1. Nickson Jose : https://github.com/nickson-jose/vsdstdcelldesign.git
+2. Kunal ghosh 
+3. Ahmed Ghazy : https://github.com/efabless/openlane.git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
