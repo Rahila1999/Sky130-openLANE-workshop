@@ -1,6 +1,6 @@
 # Sky130-openLANE-workshop
 
-##DAY 1
+#DAY 1
 
 ./flow.tcl -interactive
 
@@ -15,6 +15,6 @@ run_synthesis
 
 ![pic3](https://user-images.githubusercontent.com/66617592/97317424-cd151400-1890-11eb-9f85-4f1632197723.PNG)
 
-####DAY 1 Output
+**DAY 1 Output**
 
 ![d1](https://user-images.githubusercontent.com/66617592/97317373-bec6f800-1890-11eb-97c8-8f0f97f58d2f.PNG)
