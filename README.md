@@ -23,3 +23,20 @@ run_synthesis
 
 ## DAY 2
 
+### Floorplan using open LANE and review layout in Magic
+
+Specifying the VMETAL and HMETAL configurations explicitly in picorv32a/config.tcl file. 
+Then : prep -design picorv32a -tag <any folder name> -overwrite
+Then : run synthesis 
+Then : run_floorplan
+  
+![pic4](https://user-images.githubusercontent.com/66617592/97321040-7578a780-1894-11eb-9026-141c1a61aeb5.PNG)
+
+To view the layout in Magic
+
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def   from  ~/results/floorplan directory
+
+![d2l22](https://user-images.githubusercontent.com/66617592/97321157-950fd000-1894-11eb-9ec9-061905e82153.PNG)
+![d2222](https://user-images.githubusercontent.com/66617592/97321173-97722a00-1894-11eb-99f2-d23c207d0852.PNG)
+
+
