@@ -44,6 +44,16 @@ magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/
 
 ![d2222](https://user-images.githubusercontent.com/66617592/97321173-97722a00-1894-11eb-99f2-d23c207d0852.PNG)
 
+**Changing the FP IO MODE**
+
+set ::env(FP_IO_MODE)2
+
+run_floorplan
+
+magic -T ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def   from  ~/results/floorplan directory
+
+![22](https://user-images.githubusercontent.com/66617592/97321813-457dd400-1895-11eb-8b2b-39ef5b778642.PNG)
+
 ### Placement
 
 run_placement
@@ -52,6 +62,7 @@ run_placement
 
 ![sdf](https://user-images.githubusercontent.com/66617592/97321794-4151b680-1895-11eb-879d-0f3b32f7f2c3.PNG)
 
-![22](https://user-images.githubusercontent.com/66617592/97321813-457dd400-1895-11eb-8b2b-39ef5b778642.PNG)
+
+## DAY 3
 
 
