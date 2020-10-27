@@ -1,6 +1,6 @@
 # Sky130-openLANE-workshop
 
-## DAY 1
+## DAY 1 - Inception of open-source EDA, openLANE and Sky130 PDK
 
 ### Design Preparation Step
 ./flow.tcl -interactive
@@ -22,7 +22,7 @@ run_synthesis
 
 ![d1](https://user-images.githubusercontent.com/66617592/97317373-bec6f800-1890-11eb-97c8-8f0f97f58d2f.PNG)
 
-## DAY 2
+## DAY 2 - Good Floorplan vs Bad Floorplan and introdiction to library cells
 
 ### Floorplan using open LANE and review layout in Magic
 
@@ -63,7 +63,9 @@ run_placement
 ![sdf](https://user-images.githubusercontent.com/66617592/97321794-4151b680-1895-11eb-879d-0f3b32f7f2c3.PNG)
 
 
-## DAY 3
+## DAY 3 - Design library cell using Magic Layout and ngspice Characterization
+
+VSDSTDCELLDESIGN cloning
 
 **In Tab 1:**
 
@@ -79,8 +81,44 @@ cd ~/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic
 
 cp sky130A.tech /work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 
-**In Tab 1:**
+**In Tab 1:** - Lab introduuction to Sky130 basic layers layout and LEF using inverter
 
 magic -T sky130A.tech sky130_inv.mag &
 
 ![55](https://user-images.githubusercontent.com/66617592/97337147-e96f7b80-18a5-11eb-960d-1391f5b7148e.PNG)
+
+**Lab Exercise : To create SPICE deck using Sky130 tech and to characterize inverter using sky130 model files**
+
+In the tckon window:
+
+pwd
+/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+extract all
+
+ext2spice cthresh 0 rthresh 0
+
+In Tab 1 @ ~/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+Sky130_inv.spice and Sky130_inv.ext files have been created
+
+Edit Sky130_inv.spice to include pmoas and nmos lib files
+
+![cat](https://user-images.githubusercontent.com/66617592/97339247-5b48c480-18a8-11eb-9004-002a5d6e4a70.PNG)
+
+@ ~/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+ngspice sky130_inv.spice
+
+![33](https://user-images.githubusercontent.com/66617592/97339814-0c4f5f00-18a9-11eb-9b57-4b8c58391ef2.PNG)
+
+plot y vs time a
+ 
+![333](https://user-images.githubusercontent.com/66617592/97339904-25581000-18a9-11eb-95ef-4770b241d68b.PNG)
+ 
+![3r](https://user-images.githubusercontent.com/66617592/97339970-399c0d00-18a9-11eb-86b1-f8e8c62a0f8c.PNG)
+
+GRID
+
+![grid](https://user-images.githubusercontent.com/66617592/97340355-af07dd80-18a9-11eb-9303-3dca62d85f47.PNG)
+
